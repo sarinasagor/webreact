@@ -3,17 +3,17 @@ import React, {Component} from 'react';
 
 class Counter extends Component {
     state = {
-        count: 0,
+        value: this.props.value,
         class: "list-group-item list-group-item-success m-2",
     }
 
     handleIncrement = () => {
-        this.setState({count: this.state.count + 1});
+        this.setState({value: this.state.value + 1});
         this.setState({class: this.state.class + " active"});
     }
 
     handleDecrement = () => {
-        this.setState({count: this.state.count - 1});
+        this.setState({value: this.state.value - 1});
     }
 
     style = {
@@ -24,17 +24,16 @@ class Counter extends Component {
     }
 
     render() {
-        console.log("Props", this.props)
         return (
             <React.Fragment>
                 <div className="list-groups">
                     <button className={this.getBadgeClasses()}>
-                        <span className="badge" style={this.badgeStyle}>{this.formatCount()}</span>
+                        <span className="badge" style={this.badgeStyle}>{this.formatValue()}</span>
                     </button>
                     <button onClick={this.handleIncrement} type="button" className="m-2 btn btn-primary"
                             style={this.style}>Increment
                     </button>
-                    <button onClick={this.state.count >= 1 ? this.handleDecrement : () => {
+                    <button onClick={this.state.value >= 1 ? this.handleDecrement : () => {
                         return false
                     }} type="button"
                             className="m-2 btn btn-info"
@@ -47,13 +46,13 @@ class Counter extends Component {
 
     getBadgeClasses() {
         let classes = "m-2 btn btn-";
-        classes += this.state.count === 0 ? 'warning' : 'success';
+        classes += this.state.value === 0 ? 'warning' : 'success';
         return classes;
     }
 
-    formatCount() {
-        const {count} = this.state;
-        return count === 0 ? 'Zero' : count
+    formatValue() {
+        const {value} = this.state;
+        return value === 0 ? 'Zero' : value
     }
 }
 
