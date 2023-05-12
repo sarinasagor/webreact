@@ -16,6 +16,7 @@ class Counter extends Component {
         this.setState({value: this.state.value - 1});
     }
 
+
     style = {
         marginBottom: "0px important",
     }
@@ -39,6 +40,7 @@ class Counter extends Component {
                             className="m-2 btn btn-info"
                             style={this.style}>Decrement
                     </button>
+                    <button onClick={this.props.onDelete} className="btn btn-danger">Delete</button>
                 </div>
             </React.Fragment>
         );
